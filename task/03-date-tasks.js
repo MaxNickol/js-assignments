@@ -22,7 +22,7 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 function parseDataFromRfc2822(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 /**
@@ -37,7 +37,7 @@ function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 function parseDataFromIso8601(value) {
-   throw new Error('Not implemented');
+   return new Date(value);
 }
 
 
@@ -56,7 +56,13 @@ function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 function isLeapYear(date) {
-   throw new Error('Not implemented');
+   const year = date.getFullYear();               
+
+   if(!(year % 4 == 0)) return false;
+    else if(!(year % 100 == 0)) return true;
+    else if(!(year % 400 == 0)) return false;
+    else return true;              
+
 }
 
 
@@ -75,8 +81,43 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(startDate, endDate) {
-   throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {  
+   
+let endD = endDate.getDay();
+let startD = startDate.getDay();
+
+// getting the full date of the end parameter;
+let endH = endDate.getHours();
+let endM = endDate.getMinutes();
+let endS = endDate.getSeconds();
+let endMs = endDate.getMilliseconds();
+
+//getting the full date of the start parameter;
+let startH = startDate.getHours();
+let startM = startDate.getMinutes();
+let startS = startDate.getSeconds();
+let startMs = startDate.getMilliseconds();
+
+//calculating the difference;
+let hours =  endH - startH;
+let minutes = endM - startM;
+let seconds = endS - startS;
+let mssec =  endMs - startMs;
+
+//checking the formatting of the date;
+hours = (hours < 10) ? '0'+ hours : hours;
+minutes = (minutes < 10) ? '0'+ minutes : minutes;
+seconds = (seconds < 10) ? '0'+ seconds : seconds;
+
+if (mssec < 10) mssec = '00' + mssec;
+else if(mssec > 10 && mssec< 100) mssec = '0' + mssec;
+
+//creating the final string to return;
+if(startD !== endD) {
+   hours = +hours + 24;
+}
+
+ return `${hours}:${minutes}:${seconds}.${mssec}`;  
 }
 
 
@@ -94,7 +135,22 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-    throw new Error('Not implemented');
+    
+    let hours = date.getUTCHours();
+
+      if(hours > 12) hours -= 12;
+
+      let hoursAngle = 0.5 * (60 * hours + date.getUTCMinutes());
+      let minutesAngle = 6 * date.getUTCMinutes();
+      
+      let hoursMinutesAngle = hoursAngle - minutesAngle;
+   
+      let radians = Math.abs(hoursMinutesAngle * (Math.PI/180));
+   
+      if(radians > Math.PI) return radians - Math.PI;
+   
+      return radians;   
+
 }
 
 
