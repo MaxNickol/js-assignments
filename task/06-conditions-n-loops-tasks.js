@@ -36,9 +36,6 @@ function getFizzBuzz(num) {
     else if (num % 5 == 0) return "Buzz";
     else return num;
 
-    // return (num % 3 == 0 && num % 5 == 0) ? "FizzBuzz" : 
-    //         (num % 3 == 0) ? "Fizz" : 
-    //         (num % 5 == 0) ? "Buzz" : num;
 }
 
 
@@ -102,10 +99,7 @@ function getSumBetweenNumbers(n1, n2) {
 function isTriangle(a,b,c) {
         
      return (a + b > c && a + c > b && b + c > a );
-    // let arr = [a,b,c].sort();
 
-    // if ( arr[1] + arr[0] > arr[2]) return true;
-    // return false;
 
 }
 
@@ -395,7 +389,6 @@ function isBracketsBalanced(str) {
     }
     while(len !== str.length)
 
-    // if(str == '') return true; 
     return str == '';
 }
 
