@@ -246,14 +246,7 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  */
 function reverseString(str) {
 
-    let finalStr = "";
-
-    for (let i = str.length - 1; i >= 0; i--) {
-        
-        finalStr += str[i];
-
-    }
-    return finalStr;
+    return str.split('').reverse().join('');
 }
 
 
@@ -270,17 +263,7 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-
-    const stringNum = num.toString();
-
-    let finalStr = "";
-
-    for (let i = stringNum.length - 1; i >= 0; i--) {
-        
-        finalStr += stringNum[i];
-
-    }
-    return finalStr;
+    return num.toString().split('').reverse().join('');
 }
 
 
