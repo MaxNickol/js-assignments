@@ -30,9 +30,15 @@
  *
  */
 function getFizzBuzz(num) {    
-    return (num % 3 == 0 && num % 5 == 0) ? "FizzBuzz" : 
-            (num % 3 == 0) ? "Fizz" : 
-            (num % 5 == 0) ? "Buzz" : num;
+
+    if (num % 3 == 0 && num % 5 == 0) return "FizzBuzz";
+    else if (num % 3 == 0) return "Fizz";
+    else if (num % 5 == 0) return "Buzz";
+    else return num;
+
+    // return (num % 3 == 0 && num % 5 == 0) ? "FizzBuzz" : 
+    //         (num % 3 == 0) ? "Fizz" : 
+    //         (num % 5 == 0) ? "Buzz" : num;
 }
 
 
@@ -95,7 +101,7 @@ function getSumBetweenNumbers(n1, n2) {
  */
 function isTriangle(a,b,c) {
         
-     return (a + b > c && a + c > b && b + c > a ) ? true : false;
+     return (a + b > c && a + c > b && b + c > a );
     // let arr = [a,b,c].sort();
 
     // if ( arr[1] + arr[0] > arr[2]) return true;
@@ -137,7 +143,8 @@ function isTriangle(a,b,c) {
  *  
  */
 function doRectanglesOverlap(rect1, rect2) {
-    return (rect1.width - rect2.left >= 0 && rect1.height - rect2.top >= 0) ? true : false;
+
+    return (rect1.width - rect2.left >= 0 && rect1.height - rect2.top >= 0);    
 }
 
 
@@ -170,11 +177,9 @@ function doRectanglesOverlap(rect1, rect2) {
 function isInsideCircle(circle, point) {
     let diffX = circle.center.x - point.x;
     let diffY = circle.center.y - point.y;
+   
 
-    // if((Math.sqrt(diffX * diffX + diffY * diffY)) < circle.radius) return true;
-    // return false;    
-
-    return ((Math.sqrt(diffX * diffX + diffY * diffY)) < circle.radius) ? true : false;
+    return ((Math.sqrt(diffX * diffX + diffY * diffY)) < circle.radius);
 }
 
 
@@ -390,8 +395,8 @@ function isBracketsBalanced(str) {
     }
     while(len !== str.length)
 
-    if(str == '') return true; 
-    return false;
+    // if(str == '') return true; 
+    return str == '';
 }
 
 
