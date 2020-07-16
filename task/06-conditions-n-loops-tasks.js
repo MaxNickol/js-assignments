@@ -34,7 +34,7 @@ function getFizzBuzz(num) {
     if (num % 3 === 0 && num % 5 === 0) return "FizzBuzz";
     else if (num % 3 === 0) return "Fizz";
     else if (num % 5 === 0) return "Buzz";
-    else return num;
+    return num;
 
 }
 
@@ -358,7 +358,7 @@ function isBracketsBalanced(str) {
     do 
     {
         len = str.length;
-        str = str.replace(/\[\]|\(\)|\<\>|\{\}/ , '')
+        str = str.replace(/\[\]|\(\)|<\>|{\}/ , '');
     }
     while(len !== str.length)
 
@@ -424,7 +424,7 @@ function timespanToHumanString(startDate, endDate) {
 
     else if(res <= 545 * 86400) return `a year ago`;
 
-    else return `${round(res / (365 * 86400))} years ago`;
+    return `${round(res / (365 * 86400))} years ago`;
 
 }
 
