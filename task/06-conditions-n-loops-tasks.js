@@ -321,23 +321,13 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
+    const getSum = (num) => num.toString().split('').map(Number).reduce((sum, elem) => sum + elem);
 
-    let str = num.toString();
-    let sum = 0;
-    let final = 0;
-    
-    for (let i = 0; i < str.length; i++) {        
-        sum += Number(str[i]);        
-    }
-    if (sum > 9) {
-        let sumStr = sum.toString();
-        for (let j = 0; j < sumStr.length; j++) {
+    do {
+        num = getSum(num);
+    } while(num > 9);
 
-            final += Number(sumStr[j]);            
-        }
-        return final;
-    }
-    else return sum;
+    return num;
 }
 
 
@@ -409,11 +399,8 @@ function isBracketsBalanced(str) {
  */
 function timespanToHumanString(startDate, endDate) {    
 
-    let firstDate = startDate.getTime();
-    let secndDate = endDate.getTime();
-
     //seconds
-    let res = (secndDate - firstDate) / 1000;
+    let res = (endDate.getTime() - startDate.getTime()) / 1000;
     
     const round = (value) => (Math.abs(Math.round(value) - value) === 0.5) ? Math.floor(value) : Math.round(value);
 
@@ -479,54 +466,27 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    let strPath = "";
-   let first = pathes[0].split('/');
-   let second = pathes[1].split('/');
-   if (pathes.length > 2) {
-      let third = pathes[2].split('/');
-
-      for (let i = 0; i < second.length; i++) {
-         for(let j = 0; j < third.length; j++) {
-
-            first.filter((el) => {
-               if(el == second[i] && el == third[j])
-               strPath += el + '/' ;
-               return strPath;
-            })
-         }               
-      }
-      return strPath; 
-   }
-   for (let i = 0; i < second.length; i++) {
-   first.filter((el) => {
-      if(el == second[i])
-      strPath += el + '/' ;
-      return strPath;
-   })        
-  }
-  return strPath;
-
 //alternative way;
-//   let strPath = "";
-//   let first = pathes[0].split('/');
-//   let check = "";
+  let strPath = "";
+  let first = pathes[0].split('/');
+  let check = "";
 
-//   for (let i = 0; i < first.length; i++) {      
-//      check += first[i] + '/';
-//      let all = true;
+  for (let i = 0; i < first.length; i++) {      
+     check += first[i] + '/';
+     let all = true;
      
-//      for (let j = 0; j < pathes.length; j++) {                  
-//         if(!pathes[j].startsWith(check)) {            
-//            all = false;
-//         }                
-//      }
-//      if(all) {
-//         strPath = check; 
-//      }
-//      else break;
+     for (let j = 0; j < pathes.length; j++) {                  
+        if(!pathes[j].startsWith(check)) {            
+           all = false;
+        }                
+     }
+     if(all) {
+        strPath = check; 
+     }
+     else break;
       
-//   }   
-//   return strPath;  
+  }   
+  return strPath;  
 }
 
 
