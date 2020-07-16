@@ -31,9 +31,9 @@
  */
 function getFizzBuzz(num) {    
 
-    if (num % 3 == 0 && num % 5 == 0) return "FizzBuzz";
-    else if (num % 3 == 0) return "Fizz";
-    else if (num % 5 == 0) return "Buzz";
+    if (num % 3 === 0 && num % 5 === 0) return "FizzBuzz";
+    else if (num % 3 === 0) return "Fizz";
+    else if (num % 5 === 0) return "Buzz";
     else return num;
 
 }
@@ -225,10 +225,10 @@ function findFirstSingleChar(str) {
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
     let arr = [a,b].sort();
 
-    if(isStartIncluded == true && isEndIncluded == true) return `[${arr[0]}, ${arr[1]}]`;
-   else if(isStartIncluded == true && isEndIncluded == false) return `[${arr[0]}, ${arr[1]})`;
-   else if(isStartIncluded == false && isEndIncluded == true) return `(${arr[0]}, ${arr[1]}]`;
-   else if(isStartIncluded == false && isEndIncluded == false) return `(${arr[0]}, ${arr[1]})`;
+    if(isStartIncluded === true && isEndIncluded === true) return `[${arr[0]}, ${arr[1]}]`;
+   else if(isStartIncluded === true && isEndIncluded === false) return `[${arr[0]}, ${arr[1]})`;
+   else if(isStartIncluded === false && isEndIncluded === true) return `(${arr[0]}, ${arr[1]}]`;
+   else if(isStartIncluded === false && isEndIncluded === false) return `(${arr[0]}, ${arr[1]})`;
 }
 
 
@@ -362,7 +362,7 @@ function isBracketsBalanced(str) {
     }
     while(len !== str.length)
 
-    return str == '';
+    return str === '';
 }
 
 
@@ -561,17 +561,17 @@ function evaluateTicTacToePosition(position) {
     // checking rows
     for(let i = 0; i <= 2; i++) {  
 
-        if (position[i][0] == position[i][1] && position[i][0] == position[i][2] && position[i][0] !== undefined) return position[i][0]; 
+        if (position[i][0] === position[i][1] && position[i][0] === position[i][2] && position[i][0] !== undefined) return position[i][0]; 
     }
 
     //checking columns
     for (let i = 0; i <= 2; i++) {      
 
-        if(position[0][i] == position[1][i] && position[0][i] == position[2][i] && position[0][i] !== undefined) return position[0][i];
+        if(position[0][i] === position[1][i] && position[0][i] === position[2][i] && position[0][i] !== undefined) return position[0][i];
         }        
    //checking diagonals
-        if(position[0][0] == position[1][1] && position[0][0] == position[2][2] && position[0][0] !== undefined) return position[0][0];
-        if(position[0][2] == position[1][1] && position[1][1] == position[2][0] && position[0][2] !== undefined) return position[0][2];
+        if(position[0][0] === position[1][1] && position[0][0] === position[2][2] && position[0][0] !== undefined) return position[0][0];
+        if(position[0][2] === position[1][1] && position[1][1] === position[2][0] && position[0][2] !== undefined) return position[0][2];
 }
 
 
